@@ -1,10 +1,9 @@
-import org.openqa.selenium.Keys;
+
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Main {
@@ -43,7 +42,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Initializing
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\ralp.retanal\\Documents\\Selenium\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\crcuser.DESKTOP-P436DG7\\OneDrive - ISED-ISDE\\Selenium\\Selenium Servers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://lmrdashboard.apps.vrd-drv.crc.ca/shiny-server-pro-version/");
 
