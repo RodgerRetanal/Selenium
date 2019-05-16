@@ -19,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="103" column="32" lean-forward="true" selection-start-line="102" selection-start-column="27" selection-end-line="103" selection-end-column="32" />
+            <state relative-caret-position="279">
+              <caret line="88" selection-start-line="88" selection-end-line="88" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,7 +50,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="241" />
     <option name="y" value="69" />
-    <option name="width" value="1932" />
+    <option name="width" value="2099" />
     <option name="height" value="1167" />
   </component>
   <component name="ProjectView">
@@ -131,18 +131,18 @@
       <workItem from="1557948674971" duration="2424000" />
       <workItem from="1557951561504" duration="1905000" />
       <workItem from="1558014947635" duration="1189000" />
-      <workItem from="1558020021068" duration="13753000" />
+      <workItem from="1558020021068" duration="16490000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19271000" />
+    <option name="totallyTimeSpent" value="22008000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="241" y="69" width="1932" height="1167" extended-state="0" />
+    <frame x="241" y="69" width="2099" height="1167" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22916667" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21039726" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -180,8 +180,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="103" column="32" lean-forward="true" selection-start-line="102" selection-start-column="27" selection-end-line="103" selection-end-column="32" />
+        <state relative-caret-position="279">
+          <caret line="88" selection-start-line="88" selection-end-line="88" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

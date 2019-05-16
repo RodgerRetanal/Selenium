@@ -1,4 +1,3 @@
-
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebDriver;
@@ -48,7 +47,7 @@ public class Main {
         selectingDate(driver, "2018-12-15", "2019-01-01");
 
         // Submit input
-        driver.findElement(By.id("submit")).click();
+//        driver.findElement(By.id("submit")).click();
     }
 
     private static void selectingDataID(WebDriver driver, String id, String data) {
@@ -87,15 +86,19 @@ public class Main {
         // Selecting Frequency Band
         selectingDataID(driver, "MFSelectedFreqRange-selectized", "BETWEEN 406.1 AND 430");
 
+
         // Selecting Channel Frequency
         selectingChannels(driver, "MFSelectedCentreFreq-selectized", "406.10625");
+        selectingChannels(driver, "MFSelectedCentreFreq-selectized", "406.125");
+        selectingChannels(driver, "MFSelectedCentreFreq-selectized", "406.1875");
+        driver.findElement(By.cssSelector("input[value='power_mean_dbm']")).click();
 
         // Selecting Time Range
         selectingDate(driver, "2018-12-01", "2018-12-02");
         selectingDate(driver, "2018-12-15", "2019-01-01");
 
         // Submitting Inputs
-        driver.findElement(By.id("MFsubmit")).click();
+//        driver.findElement(By.id("MFsubmit")).click();
     }
 
     private static void selectingDataAdd(WebDriver driver, String id, String data) {
@@ -109,8 +112,8 @@ public class Main {
         WebElement selector = driver.findElement(By.id(id));
         selector.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, 2);
-        WebElement channel = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[data-value='"+ id +"']")));
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement channel = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[data-value='"+ data +"']")));
         channel.click();
 
     }
@@ -131,7 +134,7 @@ public class Main {
         driver.get("https://lmrdashboard.apps.vrd-drv.crc.ca/shiny-server-pro-version/");
 
         login(driver);
-//        timeSeriesS(driver);
+        timeSeriesS(driver);
         timeSeriesM(driver);
 
     }
