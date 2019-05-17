@@ -38,7 +38,7 @@ public class Main {
     }
 
     private static void selectingDateM(WebDriver driver, String id, String date){
-        WebElement selector = driver.findElement(By.cssSelector("input[data-initial-date ='" + id + "']"));
+        WebElement selector = driver.findElement(By.xpath(id));
         selector.click();
         selector.sendKeys(Keys.chord(Keys.CONTROL, "a"));
 
@@ -52,9 +52,28 @@ public class Main {
         selector.click();
 
         WebDriverWait wait = new WebDriverWait(driver, 30);
-        WebElement channel = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(data)));
+        WebElement channel = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[data-value='"+data+"']")));
         channel.click();
+    }
 
+    private static void selectingDateClicksA(WebDriver driver, String id){
+        WebElement selector = driver.findElement(By.xpath(id));
+        selector.click();
+
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        WebElement calendar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-top'")));
+
+        driver.findElement(By.xpath("/html/body/div[4]/div[1]/table/tbody/tr[2]/td[1]")).click();
+    }
+
+    private static void selectingDateClicksB(WebDriver driver, String id){
+        WebElement selector = driver.findElement(By.xpath(id));
+        selector.click();
+
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        WebElement calendar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-top'")));
+
+        driver.findElement(By.xpath("/html/body/div[4]/div[1]/table/tbody/tr[4]/td[1]")).click();
     }
 
     //////////////////////////////        Code for each tab    ////////////////////////////////////////////////////////
@@ -75,8 +94,7 @@ public class Main {
         submit.click();
     }
 
-    private static void timeSeriesS(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, 180);
+    private static void timeSeriesS(WebDriver driver, WebDriverWait wait) {
         WebElement timeSeriesS = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[data-value='Time Series (Single)'")));
         timeSeriesS.click();
 
@@ -91,25 +109,28 @@ public class Main {
         // Selecting Channel Frequency
 //        selectingDataID(driver, "SelectedCentreFreq-selectized", "406.1065");
 //        selectingChannels(driver, "SelectedCentreFreq-selectized", "406.1065");
-        WebElement channelFrequency = driver.findElement(By.xpath("//*[@id=\"sidebarItemExpanded\"]/div[2]/div/div/div[3]/div/div/div[2]"));
-        channelFrequency.click();
-        channelFrequency.sendKeys(Keys.BACK_SPACE);
-        channelFrequency.sendKeys("406.1065");
-        channelFrequency.sendKeys(Keys.ENTER);
+//        WebElement channelFrequency = driver.findElement(By.xpath("//*[@id=\"sidebarItemExpanded\"]/div[2]/div/div/div[3]/div/div/div[2]"));
+//        channelFrequency.click();
+//        channelFrequency.sendKeys(Keys.BACK_SPACE);
+//        channelFrequency.sendKeys("406.1065");
+//        channelFrequency.sendKeys(Keys.ENTER);
 
         // Selecting Time Range
         selectingDate(driver, "2018-12-01", "2018-12-02");
         selectingDate(driver, "2018-12-15", "2019-01-01");
+//        selectingDateClicksA(driver, "//*[@id=\"MFdefineDateRange\"]/div/input[1]");
+//        selectingDateClicksB(driver, "//*[@id=\"MFdefineDateRange\"]/div/input[2]");
+
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
         // Submit input
-//        driver.findElement(By.id("submit")).click();
+        driver.findElement(By.id("submit")).click();
 //
-//        WebElement graph = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='svg-container']")));
+        WebElement graph = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='svg-container']")));
     }
 
 
-    private static void timeSeriesM(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, 150);
+    private static void timeSeriesMF(WebDriver driver, WebDriverWait wait) {
         WebElement timeSeriesM = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[data-value='Time Series (Multi)'")));
         timeSeriesM.click();
 
@@ -126,6 +147,8 @@ public class Main {
         selectingDataAdd(driver, "MFSelectedSensor-selectized", "DGSO_ISOC_004");
         driver.findElement(By.cssSelector("input[value='power_mean_dbm']")).click();
 
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
         // Selecting Channel Frequency
         selectingChannels(driver, "MFSelectedCentreFreq-selectized", "406.10625");
         selectingChannels(driver, "MFSelectedCentreFreq-selectized", "406.11875");
@@ -133,16 +156,30 @@ public class Main {
         driver.findElement(By.cssSelector("input[value='power_mean_dbm']")).click();
 
         // Selecting Time Range
-//        selectingDate(driver, "//*[@id=\"MFdefineDateRange\"]/div/input[1]", "2018-12-02");
-//        selectingDate(driver, "//*[@id=\"MFdefineDateRange\"]/div/input[2]", "2019-01-01");
+        selectingDateM(driver, "//*[@id=\"MFdefineDateRange\"]/div/input[1]", "2018-12-02");
+        selectingDateM(driver, "//*[@id=\"MFdefineDateRange\"]/div/input[2]", "2019-01-01");
 
         // Submitting Inputs
         driver.findElement(By.id("MFsubmit")).click();
+        WebElement graph = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='svg-container']")));
     }
 
 
-    private static void heatMap(WebDriver driver) {
+    private static void heatMap(WebDriver driver, WebDriverWait wait) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[data-value='Heatmap'"))).click();
 
+        // Selecting Frequency Band
+        selectingDataID(driver, "SelectedHeatMapFreqRange-selectized", "BETWEEN 138 AND 174");
+
+        // Selecting Sensor Name
+        selectingDataID(driver, "HeatMapSelectedSensor-selectized", "CRC_SENSOR_052" );
+
+        // Selecting Time Range
+        selectingDateM(driver, "//*[@id=\"defineHeatMapDateRange\"]/div/input[1]", "2018-12-02");
+        selectingDateM(driver, "//*[@id=\"defineHeatMapDateRange\"]/div/input[2]", "2019-01-01");
+
+        // Selecting Parameter to Display
+        driver.findElement(By.cssSelector("input[value='Bandwidthmean'")).click();
     }
 
     private static void boxplot(WebDriver driver) {
@@ -155,10 +192,12 @@ public class Main {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\crcuser.DESKTOP-P436DG7\\OneDrive - ISED-ISDE\\Selenium\\Selenium Servers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://lmrdashboard.apps.vrd-drv.crc.ca/shiny-server-pro-version/");
+        WebDriverWait wait = new WebDriverWait(driver, 180);
 
         login(driver);
-        timeSeriesS(driver);
-        timeSeriesM(driver);
+        timeSeriesMF(driver, wait);
+        timeSeriesS(driver, wait);
+        heatMap(driver, wait);
 
 //        driver.manage().timeouts().implicitlyWait(15 , TimeUnit.SECONDS);
 //        driver.quit();
