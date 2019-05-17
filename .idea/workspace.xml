@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ddc41549-2c66-4f8d-8eec-5090b5d48ca3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -19,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="88" selection-start-line="88" selection-end-line="88" />
+            <state relative-caret-position="396">
+              <caret line="93" column="68" selection-start-line="93" selection-start-column="68" selection-end-line="93" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -48,10 +49,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="241" />
-    <option name="y" value="69" />
+    <option name="x" value="332" />
+    <option name="y" value="113" />
     <option name="width" value="2099" />
-    <option name="height" value="1167" />
+    <option name="height" value="1166" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -131,18 +132,18 @@
       <workItem from="1557948674971" duration="2424000" />
       <workItem from="1557951561504" duration="1905000" />
       <workItem from="1558014947635" duration="1189000" />
-      <workItem from="1558020021068" duration="16490000" />
+      <workItem from="1558020021068" duration="16644000" />
+      <workItem from="1558098207018" duration="8913000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22008000" />
+    <option name="totallyTimeSpent" value="31075000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="241" y="69" width="2099" height="1167" extended-state="0" />
-    <editor active="true" />
+    <frame x="332" y="113" width="2099" height="1166" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21039726" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.212359" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -152,7 +153,7 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27079305" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2710552" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -160,7 +161,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32978722" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3288201" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3281704" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -180,8 +181,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="88" selection-start-line="88" selection-end-line="88" />
+        <state relative-caret-position="396">
+          <caret line="93" column="68" selection-start-line="93" selection-start-column="68" selection-end-line="93" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
