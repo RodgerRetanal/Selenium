@@ -3,6 +3,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -141,7 +142,7 @@ public class Main {
         driver.findElement(By.cssSelector("input[value='Bar']")).click();
         driver.findElement(By.cssSelector("input[value='power_mean_dbm']")).click();
 
-        // Selecting Sensors
+        // Selecting Sensorsl
         selectingDataID(driver, "MFSelectedSensor-selectized", "CRC_SE_002" );
         selectingDataAdd(driver, "MFSelectedSensor-selectized", "CRC_SENSOR_052");
         selectingDataAdd(driver, "MFSelectedSensor-selectized", "DGSO_ISOC_004");
@@ -179,11 +180,20 @@ public class Main {
         selectingDateM(driver, "//*[@id=\"defineHeatMapDateRange\"]/div/input[2]", "2019-01-01");
 
         // Selecting Parameter to Display
-        driver.findElement(By.cssSelector("input[value='Bandwidthmean'")).click();
+        driver.findElement(By.cssSelector("input[value='Occupancy'")).click();
+
+        // Channel Frequency Range
+        WebElement slider = driver.findElement(By.xpath("//*[@id=\"sidebarItemExpanded\"]/div[5]/div/div/div[3]/span/span[6]"));
+        Actions move = new Actions(driver);
+        move.dragAndDropBy(slider, 80, 425).release().build().perform();
+        slider.click();
+
+//        Actions actions = new Actions(driver);
+//        actions.dragAndDrop(slider, end).build().perform();
     }
 
-    private static void boxplot(WebDriver driver) {
-
+    private static void boxplot(WebDriver driver,  WebDriverWait wait) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[data-value='Heatmap'"))).click();
     }
 
     public static void main(String[] args) {
@@ -195,8 +205,8 @@ public class Main {
         WebDriverWait wait = new WebDriverWait(driver, 180);
 
         login(driver);
-        timeSeriesMF(driver, wait);
-        timeSeriesS(driver, wait);
+//        timeSeriesMF(driver, wait);
+//        timeSeriesS(driver, wait);
         heatMap(driver, wait);
 
 //        driver.manage().timeouts().implicitlyWait(15 , TimeUnit.SECONDS);
