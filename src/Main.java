@@ -170,7 +170,7 @@ public class Main {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[data-value='Heatmap'"))).click();
 
         // Selecting Frequency Band
-        selectingDataID(driver, "SelectedHeatMapFreqRange-selectized", "BETWEEN 138 AND 174");
+        selectingDataID(driver, "SelectedHeatMapFreqRange-selectized", "BETWEEN 406.1 AND 430");
 
         // Selecting Sensor Name
         selectingDataID(driver, "HeatMapSelectedSensor-selectized", "CRC_SENSOR_052" );
@@ -185,11 +185,17 @@ public class Main {
         // Channel Frequency Range
         WebElement slider = driver.findElement(By.xpath("//*[@id=\"sidebarItemExpanded\"]/div[5]/div/div/div[3]/span/span[6]"));
         Actions move = new Actions(driver);
-        move.dragAndDropBy(slider, 80, 425).release().build().perform();
+        move.dragAndDropBy(slider, 140, 425).release().build().perform();
         slider.click();
 
-//        Actions actions = new Actions(driver);
-//        actions.dragAndDrop(slider, end).build().perform();
+        // Subset of Occupancy Value to Display
+        WebElement slider2 = driver.findElement(By.xpath("//*[@id=\"sidebarItemExpanded\"]/div[5]/div/div/div[5]/span/span[6]"));
+        move.dragAndDropBy(slider2,  50, 710).release().build().perform();
+        slider2.click();
+
+        // Submit
+        driver.findElement(By.id("HeatMapSubmit")).click();
+        WebElement graph = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[style='-webkit-user-drag: none;']")));
     }
 
     private static void boxplot(WebDriver driver,  WebDriverWait wait) {
@@ -205,12 +211,12 @@ public class Main {
         WebDriverWait wait = new WebDriverWait(driver, 180);
 
         login(driver);
-//        timeSeriesMF(driver, wait);
-//        timeSeriesS(driver, wait);
+        timeSeriesMF(driver, wait);
+        timeSeriesS(driver, wait);
         heatMap(driver, wait);
 
-//        driver.manage().timeouts().implicitlyWait(15 , TimeUnit.SECONDS);
-//        driver.quit();
+        driver.manage().timeouts().implicitlyWait(15 , TimeUnit.SECONDS);
+        driver.quit();
 
     }
 }
