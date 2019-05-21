@@ -11,6 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
 
+    ///////////////////////////////////     Variables            //////////////////////////////////////////////////////
+
     ///////////////////////////////////      Helper Methods      /////////////////////////////////////////////////////
 
     private static void selectingDataID(WebDriver driver, String id, String data) {
@@ -81,7 +83,6 @@ public class Main {
 
     private static void login(WebDriver driver) {
         driver.findElement(By.id("i0116")).sendKeys("ralp.retanal@vrd-drv.crc.ca");
-//        driver.findElement(By.id("idSIButton9")).click();
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement signIn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idSIButton9")));
@@ -190,7 +191,7 @@ public class Main {
 
         // Subset of Occupancy Value to Display
         WebElement slider2 = driver.findElement(By.xpath("//*[@id=\"sidebarItemExpanded\"]/div[5]/div/div/div[5]/span/span[6]"));
-        move.dragAndDropBy(slider2,  50, 710).release().build().perform();
+        move.dragAndDropBy(slider2,  50, 425).release().build().perform();
         slider2.click();
 
         // Submit
@@ -199,7 +200,32 @@ public class Main {
     }
 
     private static void boxplot(WebDriver driver,  WebDriverWait wait) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[data-value='Heatmap'"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[data-value='Boxplot'"))).click();
+
+        // Selecting Frequency Band
+        selectingDataID(driver, "SelectedBoxplotFreqRange-selectized", "BETWEEN 406.1 AND 430");
+
+        // Selecting Sensor Name
+        selectingDataID(driver, "BoxplotSelectedSensor-selectized", "CRC_SENSOR_052" );
+
+        // Selecting Time Range
+        selectingDateM(driver, "//*[@id=\"defineBoxplotDateRange\"]/div/input[1]", "2018-12-02");
+        selectingDateM(driver, "//*[@id=\"defineBoxplotDateRange\"]/div/input[2]", "2018-12-16");
+
+        // Parameter to Display
+        selectingDataID(driver, "defineBoxplotParameterRadio-selectized", "Power (mean)");
+
+        // Channel Frequency Range
+        WebElement slider = driver.findElement(By.xpath("//*[@id=\"sidebarItemExpanded\"]/div[3]/div/div/div[3]/span/span[6]"));
+        Actions move = new Actions(driver);
+        move.dragAndDropBy(slider, 140, 425).release().build().perform();
+        slider.click();
+
+        // Submit
+        driver.findElement(By.id("BoxplotSubmit")).click();
+        WebElement graph = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='svg-container']")));
+
+
     }
 
     public static void main(String[] args) {
@@ -214,6 +240,7 @@ public class Main {
         timeSeriesMF(driver, wait);
         timeSeriesS(driver, wait);
         heatMap(driver, wait);
+        boxplot(driver, wait);
 
         driver.manage().timeouts().implicitlyWait(15 , TimeUnit.SECONDS);
         driver.quit();
