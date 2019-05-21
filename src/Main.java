@@ -1,3 +1,5 @@
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +14,8 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
     ///////////////////////////////////     Variables            //////////////////////////////////////////////////////
+    static WebDriver driver;
+    static WebDriverWait wait;
 
     ///////////////////////////////////      Helper Methods      /////////////////////////////////////////////////////
 
@@ -224,26 +228,48 @@ public class Main {
         // Submit
         driver.findElement(By.id("BoxplotSubmit")).click();
         WebElement graph = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='svg-container']")));
-
+//        WebElement graph = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("svg[class='main-svg']")));
 
     }
 
-    public static void main(String[] args) {
-
-        // Initializing
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\crcuser.DESKTOP-P436DG7\\OneDrive - ISED-ISDE\\Selenium\\Selenium Servers\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+    @BeforeClass
+    public static void initDriver(){
+        String path = System.getProperty("user.dir");
+        System.out.println(path);
+        System.setProperty("webdriver.chrome.driver", path + "\\Selenium Servers\\chromedriver.exe");
+        driver = new ChromeDriver();
         driver.get("https://lmrdashboard.apps.vrd-drv.crc.ca/shiny-server-pro-version/");
-        WebDriverWait wait = new WebDriverWait(driver, 180);
+        wait = new WebDriverWait(driver, 180);
+    }
 
+
+    @Test
+    public void timeSeriesMTest() {
+        System.out.println("Testing Time Series (Multi)");
         login(driver);
         timeSeriesMF(driver, wait);
-        timeSeriesS(driver, wait);
-        heatMap(driver, wait);
-        boxplot(driver, wait);
-
-        driver.manage().timeouts().implicitlyWait(15 , TimeUnit.SECONDS);
-        driver.quit();
-
     }
+
+//    public static void main(String[] args) {
+//
+//        // Initializing
+//
+//        String path = System.getProperty("user.dir");
+//        System.out.println(path);
+
+//        System.setProperty("webdriver.chrome.driver", "C:\\Users\\crcuser.DESKTOP-P436DG7\\OneDrive - ISED-ISDE\\Selenium\\Selenium Servers\\chromedriver.exe");
+//        WebDriver driver = new ChromeDriver();
+//        driver.get("https://lmrdashboard.apps.vrd-drv.crc.ca/shiny-server-pro-version/");
+//        WebDriverWait wait = new WebDriverWait(driver, 180);
+//
+//        login(driver);
+//        boxplot(driver, wait);
+//        timeSeriesMF(driver, wait);
+//        timeSeriesS(driver, wait);
+//        heatMap(driver, wait);
+//
+//        driver.manage().timeouts().implicitlyWait(15 , TimeUnit.SECONDS);
+//        driver.quit();
+
+//    }
 }
